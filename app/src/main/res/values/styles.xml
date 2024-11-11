@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="screen_title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginVertical" tools:targetApi="o">75dp</item>
+        <item name="android:layout_marginTop">75dp</item>
+        <item name="android:layout_marginBottom">75dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">45dp</item>
+        <item name="android:layout_marginEnd">45dp</item>
+        <item name="android:layout_marginStart">45dp</item>
+    </style>
+
+    <style name="text_input_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:minWidth">350dp</item>
+        <item name="android:maxWidth">488dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_margin">20dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="button_style" >
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>

@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name" translatable="false">MyToolBox</string>
+    <string name="password">Password</string>
+    <string name="welcome">Welcome</string>
+    <string name="email_address">Email Address</string>
+    <string name="next">Next</string>
+    <string name="cancel">Cancel</string>
+    <string name="sign_in">Sign In</string>
+    <string name="back">Back</string>
+    <string name="sing_in_with_google">Sing in with Google</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="this_app_developed_by_g_s_dev">This App developed by G-S Dev.</string>
+    <string name="all_rights_reserved_to_gal_shimron">All rights reserved to Gal Shimron.</string>
+    <string name="tasks_app">Tasks App</string>
+    <string name="my_baby_app">My Baby App</string>
+    <string name="g_s_toolbox_app" translatable="false">G-S ToolBox App</string>
+    <string name="web_client_id" translatable="false">560599491469-769kr5du3d81ko59q1mo20r2544r9tj1.apps.googleusercontent.com</string>
+    <string name="exit_app">Exit App</string>
+</resources>

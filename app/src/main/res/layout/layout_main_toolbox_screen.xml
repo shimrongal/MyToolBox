@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/clMainToolboxContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvToolBoxMainTitle"
+        style="@style/screen_title"
+        android:text="@string/g_s_toolbox_app"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnTasksApp"
+        style="@style/button_style"
+        android:text="@string/tasks_app"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvToolBoxMainTitle" />
+
+    <Button
+        android:id="@+id/btnBabyApp"
+        style="@style/button_style"
+        android:text="@string/my_baby_app"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnTasksApp" />
+
+    <Button
+        android:id="@+id/btnExit"
+        style="@style/button_style"
+        android:text="@string/exit_app"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnBabyApp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

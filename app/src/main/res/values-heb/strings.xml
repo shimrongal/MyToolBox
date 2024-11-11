@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="password">סיסמא</string>
+    <string name="welcome">ברוך הבא</string>
+    <string name="email_address">כתובת אימייל</string>
+    <string name="next">הבא</string>
+    <string name="cancel">בטל</string>
+    <string name="sign_in">כנס</string>
+    <string name="back">חזור</string>
+    <string name="sing_in_with_google">הרשם עם גוגל</string>
+    <string name="sign_up">הרשם</string>
+    <string name="this_app_developed_by_g_s_dev">This App developed by G-S Dev.</string>
+    <string name="all_rights_reserved_to_gal_shimron">All rights reserved to Gal Shimron except the "Steel Calculator" feature ( * This feature will be used for a stand alone app *) that only belongs to Shay Gabay and can only be used by him.</string>
+    <string name="tasks_app">משימות</string>
+    <string name="my_baby_app">התינוק שלי</string>
+    <string name="exit_app">Exit App</string>
+</resources>
