@@ -16,4 +16,12 @@
     <string name="g_s_toolbox_app" translatable="false">G-S ToolBox App</string>
     <string name="web_client_id" translatable="false">560599491469-769kr5du3d81ko59q1mo20r2544r9tj1.apps.googleusercontent.com</string>
     <string name="exit_app">Exit App</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
+    <string name="login">Login</string>
+    <string name="my_tasks">My Tasks</string>
+    <string name="create_new_task">Create new Task</string>
+    <string name="tasks_list">Tasks List</string>
+    <string name="tasks">Tasks</string>
+    <string name="toolbox">ToolBox</string>
+    <string name="sign_out">Sign out</string>
 </resources>

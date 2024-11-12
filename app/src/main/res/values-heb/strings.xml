@@ -9,9 +9,17 @@
     <string name="back">חזור</string>
     <string name="sing_in_with_google">הרשם עם גוגל</string>
     <string name="sign_up">הרשם</string>
-    <string name="this_app_developed_by_g_s_dev">This App developed by G-S Dev.</string>
-    <string name="all_rights_reserved_to_gal_shimron">All rights reserved to Gal Shimron except the "Steel Calculator" feature ( * This feature will be used for a stand alone app *) that only belongs to Shay Gabay and can only be used by him.</string>
+    <string name="this_app_developed_by_g_s_dev">אפיליקציה זאת פותחה על ידי גל שמרון פיתוח תוכנה</string>
+    <string name="all_rights_reserved_to_gal_shimron">כל הזכויות שמורות לגל שמרון</string>
     <string name="tasks_app">משימות</string>
     <string name="my_baby_app">התינוק שלי</string>
-    <string name="exit_app">Exit App</string>
+    <string name="exit_app">יציאה</string>
+    <string name="my_tasks">המשימות שלי</string>
+    <string name="tasks_list">רשימת משימות</string>
+    <string name="login">התחבר</string>
+    <string name="create_new_task">צור משימה חדשה</string>
+    <string name="tasks">משימות</string>
+    <string name="toolbox">ערכת כלים</string>
+    <string name="sign_out">התנתק</string>
+
 </resources>

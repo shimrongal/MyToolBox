@@ -12,6 +12,7 @@ import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.ui.graphics.Color
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.common.api.ApiException
@@ -72,7 +73,7 @@ class FragmentLogin : Fragment() {
                                 // Navigate to the next screen
                                 requireActivity().supportFragmentManager.beginTransaction()
                                     .replace(
-                                        R.id.layoutMainActivity,
+                                        R.id.layout_navigation_drawer_activity,
                                         FragmentMyToolBox.newInstance(),
                                         "FragmentToolBoxMain"
                                     )
@@ -162,11 +163,11 @@ class FragmentLogin : Fragment() {
                                 //TODO: go to main
                                 SharedPrefManger.putPreference(IS_USER_LOGGED_IN, true)
                                 Log.i(currentClassName, "SignIn Success")
-                                requireActivity().supportFragmentManager.beginTransaction().replace(
-                                    R.id.layoutMainActivity,
-                                    FragmentMyToolBox.newInstance(),
-                                    "FragmentToolBoxMain"
-                                ).commit()
+                                try {
+                                    findNavController().navigate(R.id.action_FragmentLogin_to_FragmentTasks)
+                                } catch (e: IllegalStateException) {
+                                    Log.e(currentClassName, "IllegalStateException: ${e.message}")
+                                }
                             } else {
                                 Log.i(currentClassName, "Current user is NOT registered")
                                 Toast.makeText(

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@+id/nav_login">
+
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="dev.gs.mytoolbox.ui.login.FragmentLogin"
+        android:label="@string/login"
+        tools:layout="@layout/layout_login_screen">
+        <action
+            android:id="@+id/action_FragmentLogin_to_FragmentTasks"
+            app:destination="@id/nav_tasks"
+            app:popUpTo="@id/nav_login"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_tasks"
+        android:name="dev.gs.mytoolbox.ui.tasks.FragmentTasks"
+        android:label="@string/tasks"
+        tools:layout="@layout/layout_tasks_screen">
+        <action
+            android:id="@+id/action_FragmentTasks_to_LoginFragment"
+            app:destination="@+id/nav_login"
+            app:popUpTo="@id/nav_tasks"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_my_toolbox"
+        android:name="dev.gs.mytoolbox.ui.mytoolbox.FragmentMyToolBox"
+        android:label="@string/toolbox"
+        tools:layout="@layout/layout_tasks_screen">
+        <action
+            android:id="@+id/action_FragmentMyToolBox_to_LoginFragment"
+            app:destination="@+id/nav_login"
+            app:popUpTo="@id/nav_my_toolbox"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>

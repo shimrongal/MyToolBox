@@ -58,11 +58,8 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.material3)
-
     implementation(libs.androidx.fragment)
     implementation(libs.firebase.auth)
-
-
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
@@ -72,8 +69,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.play.services.auth)
     implementation(libs.material)
-
-
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.navigation.fragment)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

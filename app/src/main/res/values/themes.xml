@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.MyToolBox" parent="Theme.Material3.DayNight" />
+    <style name="Theme.MyToolBox" parent="Theme.Material3.DayNight.NoActionBar" />
+
+    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark" />
+
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
