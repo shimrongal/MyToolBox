@@ -13,8 +13,8 @@
     <string name="all_rights_reserved_to_gal_shimron">All rights reserved to Gal Shimron.</string>
     <string name="tasks_app">Tasks App</string>
     <string name="my_baby_app">My Baby App</string>
-    <string name="g_s_toolbox_app" translatable="false">G-S ToolBox App</string>
-    <string name="web_client_id" translatable="false">560599491469-769kr5du3d81ko59q1mo20r2544r9tj1.apps.googleusercontent.com</string>
+    <string name="g_s_toolbox_app">G-S ToolBox App</string>
+    <string name="web_client_id" translatable="false">560599491469-uijgul4nqcd8r6sthih2km5ms296evn0.apps.googleusercontent.com</string>
     <string name="exit_app">Exit App</string>
     <string name="nav_header_desc" translatable="false">Navigation header</string>
     <string name="login">Login</string>
@@ -24,4 +24,19 @@
     <string name="tasks">Tasks</string>
     <string name="toolbox">ToolBox</string>
     <string name="sign_out">Sign out</string>
+    <string name="app_settings">Settings</string>
+    <string name="navigation_drawer_open">Navigation Drawer Open</string>
+    <string name="navigation_drawer_close">Navigation Drawer Close</string>
+    <string name="add_new_task">Add new Task</string>
+    <string name="please_set_email_address">Please set Email address</string>
+    <string name="please_set_email_password">Please set Email password</string>
+    <string name="black_coffee">Black Coffee</string>
+    <string name="espresso">Espresso</string>
+    <string name="double_espresso">Double Espresso</string>
+    <string name="coffee">Coffee</string>
+    <string name="add_item">Add item</string>
+    <string name="remove_item">Remove item</string>
+    <string name="my_addictions">My Addictions</string>
+    <string name="password_visibility" translatable="false">Password visibility</string>
+    <string name="coffee_cup_image" translatable="false">Coffee cup image</string>
 </resources>

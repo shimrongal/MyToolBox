@@ -6,7 +6,8 @@ import android.util.Log
 import com.google.firebase.FirebaseApp
 import dev.gs.mytoolbox.di.utils.SharedPrefManger
 
-class MyToolBooApp : Application() {
+
+class MyToolBoxApp : Application() {
 
     companion object {
         const val TAG = "MyToolBooApp"

@@ -21,5 +21,20 @@
     <string name="tasks">משימות</string>
     <string name="toolbox">ערכת כלים</string>
     <string name="sign_out">התנתק</string>
+    <string name="app_settings">הגדרות</string>
+    <string name="navigation_drawer_open">פתח תפריט צד</string>
+    <string name="navigation_drawer_close">סגור תפריט צד</string>
+    <string name="add_new_task">הוסף משימה חדשה</string>
+    <string name="please_set_email_address">אנא הזן כתובת אימייל</string>
+    <string name="please_set_email_password">אנא הזן את הסיסמא המתאימה לכתובת האימייל</string>
+    <string name="black_coffee">קפה שחור</string>
+    <string name="espresso">אספרסו</string>
+    <string name="double_espresso">דאבל אספרסו</string>
+    <string name="coffee">קפה</string>
+    <string name="add_item">הוסף</string>
+    <string name="remove_item">הסר</string>
+    <string name="g_s_toolbox_app">ארגז הכלים של גל שמרון</string>
+    <string name="my_addictions">ההתמכרויות שלי</string>
+
 
 </resources>

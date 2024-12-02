@@ -7,9 +7,6 @@ import android.content.SharedPreferences
 object SharedPrefManger {
 
     private const val PREFERENCE_NAME = "ParentToolBoxPref"
-
-    const val IS_USER_LOGGED_IN = "isLoggedIn"
-
     lateinit var sharedPrefManger: SharedPreferences
 
     fun init(context: Context) {
