@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/clLoginContainer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/tvWelcome"
-        style="@style/screen_title"
+        style="@style/title"
         android:text="@string/welcome"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -16,7 +17,9 @@
 
     <EditText
         android:id="@+id/etEmailAddress"
-        style="@style/text_input_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/sub_title"
         android:autofillHints="emailAddress"
         android:hint="@string/email_address"
         android:inputType="textEmailAddress"
@@ -26,23 +29,27 @@
 
     <dev.gs.mytoolbox.ui.custom_views.ViewPassword
         android:id="@+id/viewPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:background="@drawable/edit_text_views_border"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etEmailAddress" />
 
     <Button
         android:id="@+id/btnGoogleSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
         style="@style/button_style"
-        android:text="@string/sing_in_with_google"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/sign_in_with_google"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewPassword" />
 
     <Button
         android:id="@+id/btnSignUp"
-        style="@style/button_style"
+        style="@style/login_button"
         android:text="@string/sign_up"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/btnSignIn"
@@ -50,7 +57,7 @@
 
     <Button
         android:id="@+id/btnSignIn"
-        style="@style/button_style"
+        style="@style/login_button"
         android:text="@string/sign_in"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@id/btnSignUp"
@@ -58,26 +65,16 @@
 
     <TextView
         android:id="@+id/tvDevelopedBy"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="5dp"
         android:text="@string/this_app_developed_by_g_s_dev"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/tvRightsStatus"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/login_reserved_rights_text" />
 
     <TextView
         android:id="@+id/tvRightsStatus"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        style="@style/login_reserved_rights_text"
         android:text="@string/all_rights_reserved_to_gal_shimron"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"

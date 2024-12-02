@@ -155,7 +155,7 @@ class FragmentLogin : Fragment() {
                     isPasswordVisible = !isPasswordVisible
                     view.isSelected = isPasswordVisible
                     // Toggle input type for password visibility
-                    viewPassword.setInputType(isPasswordVisible)
+                    vpUserPassword.setInputType(isPasswordVisible)
                 }
                 btnSignUpPopUp.setOnClickListener {
                     if (etEmailAddress.text.isNotEmpty() && vpUserPassword.getPassword().isNotEmpty()) {
