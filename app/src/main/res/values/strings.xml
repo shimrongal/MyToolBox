@@ -39,4 +39,6 @@
     <string name="my_addictions">My Addictions</string>
     <string name="password_visibility" translatable="false">Password visibility</string>
     <string name="coffee_cup_image" translatable="false">Coffee cup image</string>
+    <string name="address">Address</string>
+    <string name="phone_number">Phone number</string>
 </resources>

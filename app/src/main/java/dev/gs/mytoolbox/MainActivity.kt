@@ -1,21 +1,21 @@
 package dev.gs.mytoolbox
 
+
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.firebase.auth.FirebaseAuth
 import dev.gs.mytoolbox.databinding.LayoutNavigationDrawerActivityBinding
-import dev.gs.mytoolbox.di.utils.SharedPrefManger
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,7 +26,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var layoutNavigationDrawerActivityBinding: LayoutNavigationDrawerActivityBinding
-    private lateinit var drawerLayout: DrawerLayout
+    private val navController: NavController by lazy {
+        (supportFragmentManager.findFragmentById(R.id.fragment_nav_host_content_navigation_drawer) as NavHostFragment).navController
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,25 +38,41 @@ class MainActivity : AppCompatActivity() {
         setContentView(layoutNavigationDrawerActivityBinding.root)
         setSupportActionBar(layoutNavigationDrawerActivityBinding.appBarNavigationDrawer.toolbar)
 
-        drawerLayout = layoutNavigationDrawerActivityBinding.layoutNavigationDrawerActivity
         val navigationView = layoutNavigationDrawerActivityBinding.navView
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragment_nav_host_content_navigation_drawer) as NavHostFragment
-        val navController = navHostFragment.navController
-        val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
-        val currentStartDestinationId = if (SharedPrefManger.getPreference(
-                SharedPrefManger.IS_USER_LOGGED_IN,
-                false
-            )
-        ) R.id.nav_tasks else R.id.nav_login
-        navGraph.setStartDestination(currentStartDestinationId)
-        navController.graph = navGraph
 
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_tasks -> {
+                    Log.d(javaClass.simpleName, "Nav view item click - NavTasks")
+                    navController.navigate(R.id.nav_tasks)
+                }
+
+                R.id.nav_my_toolbox -> {
+                    Log.d(javaClass.simpleName, "Nav View item click - Nav My ToolBox")
+                    navController.navigate(R.id.nav_my_toolbox)
+                }
+
+                else -> {
+                    Log.d(javaClass.simpleName, "Something is wrong")
+                }
+            }
+            //drawerLayout.close()
+            layoutNavigationDrawerActivityBinding.layoutNavigationDrawerActivity.close()
+            true
+
+        }
+
+        val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
+        FirebaseAuth.getInstance().currentUser?.let {
+            navGraph.setStartDestination(R.id.nav_my_toolbox)
+        } ?: navGraph.setStartDestination(R.id.nav_login)
+        navController.graph = navGraph
 
         appBarConfiguration = AppBarConfiguration(
             setOf(R.id.nav_login, R.id.nav_tasks, R.id.nav_my_toolbox),
-            drawerLayout
+            layoutNavigationDrawerActivityBinding.layoutNavigationDrawerActivity
         )
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navigationView.setupWithNavController(navController)
 
@@ -65,28 +83,19 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
-        /*        // Check if the user is logged in
-                if (SharedPrefManger.getPreference(IS_USER_LOGGED_IN, false)) {
-                    supportFragmentManager.beginTransaction().replace(
-                        R.id.layoutNavigationDrawerActivity,
-                        FragmentMyToolBox.newInstance(),
-                        "FragmentMyToolBox"
-                    ).commit()
-
-                } else {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.layoutNavigationDrawerActivity, FragmentLogin.newInstance(), "LoginFragment")
-                        .commit()
-                }*/
     }
 
+
     private fun lockDrawer() {
-        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        layoutNavigationDrawerActivityBinding.layoutNavigationDrawerActivity.setDrawerLockMode(
+            DrawerLayout.LOCK_MODE_LOCKED_CLOSED
+        )
     }
 
     private fun unlockDrawer() {
-        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+        layoutNavigationDrawerActivityBinding.layoutNavigationDrawerActivity.setDrawerLockMode(
+            DrawerLayout.LOCK_MODE_UNLOCKED
+        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -96,25 +105,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.nav_setting -> {
+                Toast.makeText(this, "TODO: please implement me", Toast.LENGTH_LONG).show()
+                Log.w(javaClass.simpleName, "Not Implemented yet")
+                true
+            }
+
             R.id.nav_sign_out -> {
-                SharedPrefManger.putPreference(SharedPrefManger.IS_USER_LOGGED_IN, false)
-                val navController =
-                    findNavController(R.id.fragment_nav_host_content_navigation_drawer)
-                when (navController.currentDestination?.id) {
-                    R.id.nav_tasks -> {
-                        navController.navigate(R.id.action_FragmentTasks_to_LoginFragment)
-                        true
-                    }
-
-                    R.id.nav_my_toolbox -> {
-                        navController.navigate(R.id.action_FragmentMyToolBox_to_LoginFragment)
-                        true
-                    }
-
-                    else -> {
-                        false
-                    }
-                }
+                FirebaseAuth.getInstance().signOut()
+                //TODO: update when new features are used
+                navController.navigate(R.id.action_to_LoginFragment)
+                true
             }
 
             R.id.nav_exit -> {
@@ -129,8 +130,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController: NavController =
-            findNavController(R.id.fragment_nav_host_content_navigation_drawer)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 

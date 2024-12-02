@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/etDisplayName"
+        style="@style/text_input_style"
+        android:hint="Display name" />
+
+    <EditText
+        android:id="@+id/etEmailAddress"
+        style="@style/text_input_style"
+        android:hint="@string/email_address"
+        android:inputType="textEmailAddress" />
+
+    <dev.gs.mytoolbox.ui.custom_views.ViewPassword
+        android:id="@+id/vpUserPassword"
+        style="@style/text_input_style" />
+
+    <EditText
+        android:id="@+id/etHomeAddress"
+        style="@style/text_input_style"
+        android:hint="@string/address"
+        android:inputType="textPostalAddress" />
+
+    <EditText
+        android:id="@+id/etPhoneNumber"
+        style="@style/text_input_style"
+        android:hint="@string/phone_number"
+        android:inputType="phone" />
+
+    <Button
+        android:id="@+id/btnSignupNewUser"
+        style="@style/button_style"
+        android:layout_gravity="center"
+        android:text="@string/sign_up" />
+
+</LinearLayout>
