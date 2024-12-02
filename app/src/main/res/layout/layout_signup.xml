@@ -8,33 +8,41 @@
 
     <EditText
         android:id="@+id/etDisplayName"
-        style="@style/text_input_style"
+        style="@style/text_input_with_border"
         android:hint="Display name" />
 
     <EditText
         android:id="@+id/etEmailAddress"
-        style="@style/text_input_style"
+        style="@style/text_input_with_border"
         android:hint="@string/email_address"
         android:inputType="textEmailAddress" />
 
     <dev.gs.mytoolbox.ui.custom_views.ViewPassword
         android:id="@+id/vpUserPassword"
-        style="@style/text_input_style" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:background="@drawable/edit_text_views_border"
+        android:layout_margin="10dp"/>
+
 
     <EditText
         android:id="@+id/etHomeAddress"
-        style="@style/text_input_style"
+        style="@style/text_input_with_border"
         android:hint="@string/address"
         android:inputType="textPostalAddress" />
 
     <EditText
         android:id="@+id/etPhoneNumber"
-        style="@style/text_input_style"
+        style="@style/text_input_with_border"
         android:hint="@string/phone_number"
         android:inputType="phone" />
 
     <Button
         android:id="@+id/btnSignupNewUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         style="@style/button_style"
         android:layout_gravity="center"
         android:text="@string/sign_up" />
