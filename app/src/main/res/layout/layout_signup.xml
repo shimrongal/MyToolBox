@@ -19,11 +19,7 @@
 
     <dev.gs.mytoolbox.ui.custom_views.ViewPassword
         android:id="@+id/vpUserPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:background="@drawable/edit_text_views_border"
-        android:layout_margin="10dp"/>
+        style="@style/password_view_style"     />
 
 
     <EditText

@@ -4,8 +4,7 @@
     android:id="@+id/clLoginContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
-    android:background="@color/white">
+    android:padding="20dp">
 
     <TextView
         android:id="@+id/tvWelcome"
@@ -17,35 +16,40 @@
 
     <EditText
         android:id="@+id/etEmailAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/sub_title"
         android:autofillHints="emailAddress"
         android:hint="@string/email_address"
         android:inputType="textEmailAddress"
+        style="@style/text_input_with_border"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
+        app:layout_constraintTop_toBottomOf="@id/tvWelcome"
+        app:layout_constraintBottom_toTopOf="@id/viewPassword"/>
 
     <dev.gs.mytoolbox.ui.custom_views.ViewPassword
         android:id="@+id/viewPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:background="@drawable/edit_text_views_border"
+        style="@style/password_view_style"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etEmailAddress" />
+        app:layout_constraintTop_toBottomOf="@id/etEmailAddress"
+        app:layout_constraintBottom_toTopOf="@id/prSignIn"
+        />
+
+    <ProgressBar
+        android:id="@+id/prSignIn"
+        style="@style/progress_style"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPassword" />
 
     <Button
         android:id="@+id/btnGoogleSignIn"
+        style="@style/button_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        style="@style/button_style"
         android:text="@string/sign_in_with_google"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPassword" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/prSignIn" />
 
     <Button
         android:id="@+id/btnSignUp"
@@ -59,18 +63,18 @@
         android:id="@+id/btnSignIn"
         style="@style/login_button"
         android:text="@string/sign_in"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@id/btnSignUp"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnGoogleSignIn" />
 
     <TextView
         android:id="@+id/tvDevelopedBy"
+        style="@style/login_reserved_rights_text"
         android:text="@string/this_app_developed_by_g_s_dev"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/tvRightsStatus"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        style="@style/login_reserved_rights_text" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/tvRightsStatus"
