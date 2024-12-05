@@ -35,6 +35,8 @@
     <string name="remove_item">הסר</string>
     <string name="g_s_toolbox_app">ארגז הכלים של גל שמרון</string>
     <string name="my_addictions">ההתמכרויות שלי</string>
-
+    <string name="address">כתובת</string>
+    <string name="phone_number">מספר טלפון</string>
+    <string name="add_task_tab">הוסף לשונית משימות</string>
 
 </resources>
