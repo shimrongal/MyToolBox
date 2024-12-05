@@ -89,9 +89,7 @@ class FragmentLogin : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         Log.i(javaClass.simpleName, "onCreateView")
         layoutLoginScreenBinding = LayoutLoginScreenBinding.inflate(inflater)
@@ -114,9 +112,7 @@ class FragmentLogin : Fragment() {
                 signInRequest = viewModelLogin.initSignInRequeset(getString(R.string.web_client_id))
                 oneTapClient.beginSignIn(signInRequest).addOnSuccessListener(requireActivity()) { result ->
                     try {
-                        val intentSenderRequest = IntentSenderRequest
-                            .Builder(result.pendingIntent.intentSender)
-                            .build()
+                        val intentSenderRequest = IntentSenderRequest.Builder(result.pendingIntent.intentSender).build()
                         signInResultLauncher.launch(intentSenderRequest)
                     } catch (e: IntentSender.SendIntentException) {
                         Log.e(TAG, "Error starting intent sender: ${e.message}")
@@ -130,22 +126,17 @@ class FragmentLogin : Fragment() {
                 it.hideKeyboard()
                 when {
                     etEmailAddress.text.isEmpty() -> Snackbar.make(
-                        layoutLoginScreenBinding.root,
-                        getString(R.string.please_set_email_address),
-                        Snackbar.LENGTH_LONG
+                        layoutLoginScreenBinding.root, getString(R.string.please_set_email_address), Snackbar.LENGTH_LONG
                     ).show()
 
                     viewPassword.getPassword().isEmpty() -> Snackbar.make(
-                        layoutLoginScreenBinding.root,
-                        getString(R.string.please_set_email_password),
-                        Snackbar.LENGTH_LONG
+                        layoutLoginScreenBinding.root, getString(R.string.please_set_email_password), Snackbar.LENGTH_LONG
                     ).show()
 
                     else -> {
-                        layoutLoginScreenBinding.prSignIn.visibility =View.VISIBLE
+                        layoutLoginScreenBinding.prSignIn.visibility = View.VISIBLE
                         viewModelLogin.signInWithEmailAndPassword(
-                            etEmailAddress.text.toString(),
-                            viewPassword.getPassword().toString()
+                            etEmailAddress.text.toString(), viewPassword.getPassword().toString()
                         )
                     }
                 }
@@ -168,8 +159,9 @@ class FragmentLogin : Fragment() {
                     vpUserPassword.setInputType(isPasswordVisible)
                 }
                 btnSignUpPopUp.setOnClickListener {
+                    it.hideKeyboard()
                     if (etEmailAddress.text.isNotEmpty() && vpUserPassword.getPassword().isNotEmpty()) {
-                        layoutLoginScreenBinding.prSignIn.visibility =View.VISIBLE
+                        layoutLoginScreenBinding.prSignIn.visibility = View.VISIBLE
                         viewModelLogin.createNewUser(etDisplayName.text.toString(), etHomeAddress.text.toString(), etPhoneNumber.text.toString(), etEmailAddress.text.toString(), vpUserPassword.getPassword().toString())
                     } else {
                         Snackbar.make(layoutLoginScreenBinding.root, "Please fill in all fields", Snackbar.LENGTH_LONG).show()
@@ -178,19 +170,18 @@ class FragmentLogin : Fragment() {
                 }
             }
         }
-        viewModelLogin.currentFirebaseUser.observe(viewLifecycleOwner)
-        { firebaseUser -> //TODO: save firebaseUser to db
-            layoutLoginScreenBinding.prSignIn.visibility =View.GONE
+        viewModelLogin.currentFirebaseUser.observe(viewLifecycleOwner) { firebaseUser -> //TODO: save firebaseUser to db
+            layoutLoginScreenBinding.prSignIn.visibility = View.GONE
             signUpPopUp?.takeIf { it.isShowing }?.let {
                 dismissSignUpPopUp()
             }
             SharedPrefManger.putPreference(SharedPrefManger.IS_SIGN_IN, true)
             findNavController().navigate(R.id.action_FragmentLogin_to_FragmentToolBox)
         }
-        viewModelLogin.exception.observe(viewLifecycleOwner)
-        {
-            Log.e(TAG, "Error: $it")
-            Snackbar.make(layoutLoginScreenBinding.root, "Error: $it", Snackbar.LENGTH_LONG).show()
+        viewModelLogin.exception.observe(viewLifecycleOwner) {
+            layoutLoginScreenBinding.prSignIn.visibility = View.GONE
+            Log.e(TAG, "Error: $it\n stackTrace is: ${it.stackTrace}")
+            Snackbar.make(layoutLoginScreenBinding.root, "Error: ${it.message}", Snackbar.LENGTH_LONG).show()
         }
     }
 
@@ -212,10 +203,12 @@ class FragmentLogin : Fragment() {
                 Log.w(TAG, "Not Implemented yet")
                 true
             }
+
             R.id.nav_exit -> {
                 requireActivity().finishAffinity()
                 true
             }
+
             else -> {
                 super.onOptionsItemSelected(item)
             }
