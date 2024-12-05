@@ -15,6 +15,11 @@
             app:destination="@id/nav_tasks"
             app:popUpTo="@id/nav_login"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_FragmentLogin_to_FragmentToolBox"
+            app:destination="@id/nav_my_toolbox"
+            app:popUpTo="@id/nav_login"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -23,7 +28,7 @@
         android:label="@string/tasks"
         tools:layout="@layout/layout_tasks_screen">
         <action
-            android:id="@+id/action_FragmentTasks_to_LoginFragment"
+            android:id="@+id/action_to_LoginFragment"
             app:destination="@+id/nav_login"
             app:popUpTo="@id/nav_tasks"
             app:popUpToInclusive="true" />
@@ -36,10 +41,16 @@
         android:label="@string/toolbox"
         tools:layout="@layout/layout_tasks_screen">
         <action
-            android:id="@+id/action_FragmentMyToolBox_to_LoginFragment"
+            android:id="@+id/action_to_LoginFragment"
             app:destination="@+id/nav_login"
             app:popUpTo="@id/nav_my_toolbox"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_FragmentMyToolBox_to_TasksFragment"
+            app:destination="@+id/nav_tasks"
+            app:popUpTo="@id/nav_my_toolbox"
+            app:popUpToInclusive="false" />
+
     </fragment>
 
 </navigation>

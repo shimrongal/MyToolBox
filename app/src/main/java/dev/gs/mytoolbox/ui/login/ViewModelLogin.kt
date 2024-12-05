@@ -20,32 +20,15 @@ class ViewModelLogin(app: Application) : AndroidViewModel(app) {
     private val _exception: MutableLiveData<Exception> = MutableLiveData()
     val exception: LiveData<Exception> get() = _exception
 
-
     fun handleGoogleSignInResult(credential: SignInCredential) {
-        val idToken = credential.googleIdToken
-        Log.i(javaClass.simpleName, "Received Google ID Token")
-
-        if (idToken != null) {
-            val firebaseCredential = GoogleAuthProvider.getCredential(idToken, null)
+        credential.googleIdToken?.let {
+            val firebaseCredential = GoogleAuthProvider.getCredential(it, null)
             FirebaseAuth.getInstance().signInWithCredential(firebaseCredential).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    // Sign-in success
-                    Log.d(javaClass.simpleName, "signInWithCredential:success")
-                    FirebaseAuth.getInstance().currentUser?.let {
-                        _currentFirebaseUser.postValue(it)
-                    } ?: Log.e(javaClass.simpleName, "Exception : Firebase user is null")
-
-
-                } else {
-                    // Sign-in failed
-                    Log.w(javaClass.simpleName, "signInWithCredential:failure", task.exception)
-                    _exception.postValue(task.exception)
-                }
+                task.takeIf { it.isSuccessful }?.result?.user?.let { firebaseUser ->
+                    _currentFirebaseUser.postValue(firebaseUser)
+                } ?: _exception.postValue(task.exception)
             }
-        } else {
-            Log.d(javaClass.simpleName, "No Google ID token received")
-            _exception.postValue(Exception("No Google ID token received"))
-        }
+        } ?: _exception.postValue(Exception("No Google ID token received"))
     }
 
     fun initSignInRequeset(webClientId: String): BeginSignInRequest {
@@ -60,29 +43,29 @@ class ViewModelLogin(app: Application) : AndroidViewModel(app) {
 
     fun signInWithEmailAndPassword(emailAddress: String, emailPass: String) {
         FirebaseAuth.getInstance().signInWithEmailAndPassword(emailAddress, emailPass).addOnCompleteListener { task ->
-            task.result.user?.let {
+            task.takeIf { it.isSuccessful }?.result?.user?.let { firebaseUser ->
                 Log.i(javaClass.simpleName, "SignIn Success")
-                _currentFirebaseUser.postValue(it)
+                _currentFirebaseUser.postValue(firebaseUser)
             } ?: _exception.postValue(task.exception)
         }
     }
 
     fun createNewUser(displayName: String = "", homeAddress: String = "", phoneNumber: String = "", emailAddress: String, emailPass: String) {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(emailAddress, emailPass).addOnCompleteListener { task ->
-            task.result.user?.let { user ->
+            task.takeIf { it.isSuccessful }?.result?.user?.let { firebaseUser ->
                 val userProfileChangeRequest = UserProfileChangeRequest.Builder().setDisplayName(displayName).build()
-                user.updateProfile(userProfileChangeRequest).addOnCompleteListener {
+                //TODO: user details to db
+                firebaseUser.updateProfile(userProfileChangeRequest).addOnCompleteListener {
                     if (it.isSuccessful) {
                         Log.d(javaClass.simpleName, "DisplayName updated")
                     } else {
                         Log.w(javaClass.simpleName, "Error: DisplayName NOT updated")
                     }
                 }
-                _currentFirebaseUser.postValue(user)
+                _currentFirebaseUser.postValue(firebaseUser)
             } ?: _exception.postValue(task.exception)
         }
     }
-
 }
 
 

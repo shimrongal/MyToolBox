@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <style name="text">
         <item name="android:gravity">center</item>
-        <item name="android:padding">5dp</item>
         <item name="android:minWidth">48dp</item>
         <item name="android:minHeight">48dp</item>
     </style>
@@ -23,18 +22,20 @@
     <style name="text_input" parent="sub_title">
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">2</item>
-        <item name="background">@drawable/edit_text_views_border</item>
     </style>
 
 
-    <style name="button_style" parent="text">
+    <style name="button_style">
+        <item name="android:gravity">center</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_margin">10dp</item>
         <item name="minWidth">48dp</item>
-        <item name="minHeight">48dp</item>
+        <item name="minHeight">60dp</item>
         <item name="android:radius">2dp</item>
     </style>
 
-    <style name="weighted_item" >
+    <style name="weighted_item">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
@@ -91,17 +92,9 @@
     </style>
 
     <style name="text_input_with_border" parent="text_input">
-        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/edit_text_views_border</item>
-    </style>
-
-    <style name="view_password">
-        <item name="android:layout_margin">10dp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:minHeight">48dp</item>
         <item name="android:background">@drawable/edit_text_views_border</item>
     </style>
 
@@ -111,5 +104,21 @@
         <item name="android:inputType">textPassword</item>
         <item name="android:layout_weight">9</item>
         <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="password_view_style">
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:background">@drawable/edit_text_views_border</item>
+    </style>
+
+    <style name="progress_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:visibility">gone</item>
     </style>
 </resources>

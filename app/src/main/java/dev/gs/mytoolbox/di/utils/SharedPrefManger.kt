@@ -9,6 +9,8 @@ object SharedPrefManger {
     private const val PREFERENCE_NAME = "ParentToolBoxPref"
     lateinit var sharedPrefManger: SharedPreferences
 
+    const val IS_SIGN_IN = "IsSignIn"
+
     fun init(context: Context) {
         sharedPrefManger = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
     }
